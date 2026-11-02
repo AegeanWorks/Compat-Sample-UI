@@ -6,10 +6,10 @@ UI sample for AI-compat proof
 
 ## ⚡ 30-Second Cold-Start Quick Reference
 
-- **Runtime Prerequisites**: <FILL: each runtime this project needs and its minimum version>
+- **Runtime Prerequisites**: Python 3.10+ (stdlib only, no extra dependencies)
 - **Canonical Regression Shield Gate**:
   ```bash
-  <FILL: the command that runs the whole test suite from this project root>
+  python -m unittest discover
   ```
 
 ### 🛠️ AIKit Commands (run from the AIKit folder)
@@ -30,6 +30,10 @@ compat-sample-ui/
 ├── LICENSES/                 <- REUSE license texts
 ├── REUSE.toml                <- Machine-readable SPDX metadata
 ├── README.md
+├── demo.py                   <- scripted WORLD-DELTA drive (compat)
+├── inventory.py              <- UI inventory kind|name|locator (compat)
+├── assets/                   <- logo, social preview, screenshots
+├── tests/                    <- regression shield (unittest)
 └── .aikit/                   <- this project's memory: record, ledger, decisions
 ```
 

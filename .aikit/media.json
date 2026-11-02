@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "name": "compat-sample-ui",
+  "repo": "Compat-Sample-UI",
+  "has_ui": false,
+  "ui_kind": "library",
+  "palette": [
+    "#0b0712",
+    "#2b1230",
+    "#a466f5",
+    "#f58ebb"
+  ],
+  "motif": "network",
+  "layout": "terminal",
+  "assets": {
+    "logo": {
+      "path": "assets/logo.svg",
+      "status": "pending_review",
+      "commit": "",
+      "generated_at": "2026-11-03T00:21:08",
+      "review": null
+    },
+    "social_preview": {
+      "path": "assets/social-preview.svg",
+      "status": "pending_review",
+      "commit": "",
+      "generated_at": "2026-11-03T00:21:08",
+      "review": null
+    }
+  },
+  "screenshots": []
+}

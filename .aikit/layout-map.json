@@ -1,3 +1,22 @@
 {
-  "controls": []
+  "controls": [
+    {
+      "name": "save-btn",
+      "box": [
+        10,
+        10,
+        80,
+        24
+      ]
+    },
+    {
+      "name": "name-field",
+      "box": [
+        10,
+        40,
+        160,
+        24
+      ]
+    }
+  ]
 }

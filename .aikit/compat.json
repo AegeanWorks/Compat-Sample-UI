@@ -1,15 +1,15 @@
 {
   "schema": 1,
-  "kind": "headless",
-  "has_ui": false,
+  "kind": "ui",
+  "has_ui": true,
   "commands": {
     "inventory": "python inventory.py",
     "scripted": "python demo.py --scripted"
   },
   "screenshots": {
     "dir": "assets/screenshots",
-    "before": "",
-    "after": ""
+    "before": "assets/screenshots/before.png",
+    "after": "assets/screenshots/after.png"
   },
   "hooks": {
     "layout_map": ".aikit/layout-map.json",
