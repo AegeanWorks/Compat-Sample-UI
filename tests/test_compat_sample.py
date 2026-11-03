@@ -45,6 +45,49 @@ class TestCompatSample(unittest.TestCase):
         self.assertGreaterEqual(len(deltas), 2)
         self.assertIn("OK: scripted drive complete", proc.stdout)
 
+    def test_seeded_replay_is_deterministic(self):
+        compat = json.loads(
+            (ROOT / ".aikit" / "compat.json").read_text(encoding="utf-8")
+        )
+        seed_flag = (compat.get("seed") or {}).get("flag")
+        self.assertEqual(seed_flag, "--seed")
+        first = subprocess.run(
+            [sys.executable, "demo.py", "--scripted", "--seed", "7"],
+            cwd=str(ROOT),
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+        second = subprocess.run(
+            [sys.executable, "demo.py", "--scripted", "--seed", "7"],
+            cwd=str(ROOT),
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+        self.assertEqual(first.returncode, 0, msg=first.stderr[-400:])
+        self.assertEqual(second.returncode, 0, msg=second.stderr[-400:])
+        first_deltas = sorted(
+            line for line in first.stdout.splitlines() if "WORLD-DELTA:" in line
+        )
+        second_deltas = sorted(
+            line for line in second.stdout.splitlines() if "WORLD-DELTA:" in line
+        )
+        self.assertTrue(first_deltas)
+        self.assertEqual(first_deltas, second_deltas)
+        self.assertIn("SEED: 7", first.stdout)
+        self.assertIn("WORLD-DELTA: counter=7->8", first.stdout)
+        for rel_key in ("baseline", "delta"):
+            rel = (compat.get("bench") or {}).get(rel_key, "")
+            self.assertTrue(rel, msg=f"bench.{rel_key} is empty")
+            json.loads((ROOT / rel).read_text(encoding="utf-8"))
+        evidence_rel = (compat.get("evidence") or {}).get("file", "")
+        self.assertTrue(evidence_rel, msg="evidence.file is empty")
+        evidence = json.loads(
+            (ROOT / evidence_rel).read_text(encoding="utf-8")
+        )
+        self.assertEqual(evidence.get("schema"), 1)
+
     def test_compat_layout_matches_inventory_and_screenshots(self):
         compat = json.loads(
             (ROOT / ".aikit" / "compat.json").read_text(encoding="utf-8")

@@ -1,5 +1,55 @@
 {
   "version": 1,
-  "active_task": null,
-  "checkpoints": []
+  "active_task": {
+    "task_id": "compat-audit-001",
+    "last_phase": "phase 4",
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1793722111.5653136,
+    "owner": "kilo:audit",
+    "started_by": "kilo:audit",
+    "continuations": []
+  },
+  "checkpoints": [
+    {
+      "task_id": "compat-audit-001",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/3] Audit wave0+2 commits; plan seeded-replay sync to current scaffold",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1793722044.6101103,
+      "timestamp_str": "2026-11-03 19:07:24",
+      "agent": "kilo:audit",
+      "impact_assessment": {
+        "why": "compat-sample-ui passes 5/5 but predates current scaffold: demo lacks --seed, compat lacks seed/bench/evidence, missing replay/bench/evidence files",
+        "benefits": "deterministic seeded replay, bench baseline, evidence links; zero other-project touch",
+        "risks": "contract: compat.json schema stays v1; dependency: stdlib only; concurrency: single-file demo, no threads; state: atomic JSON writes, no migration",
+        "mitigation": "minimal failing-first test then template-aligned fix; full gates before commit; explicit staging"
+      },
+      "plan_digest": "27dc43b55924d8a5ecc5c50b8a104b511de60bfbbb971719cba8c4549544780d"
+    },
+    {
+      "task_id": "compat-audit-001",
+      "phase": "phase 3",
+      "phase_num": 3,
+      "description": "[2/3] Seeded-replay sync implemented: demo --seed, compat seed/bench/evidence, 4/4 tests",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1793722096.1125622,
+      "timestamp_str": "2026-11-03 19:08:16",
+      "agent": "kilo:audit"
+    },
+    {
+      "task_id": "compat-audit-001",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[3/3] Gates 5/5, secrets clean, compat verify OK; checklists: passed",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1793722111.5653136,
+      "timestamp_str": "2026-11-03 19:08:31",
+      "agent": "kilo:audit"
+    }
+  ]
 }
