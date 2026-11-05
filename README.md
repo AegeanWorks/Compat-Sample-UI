@@ -8,7 +8,8 @@
 > **Archived**: Retired experiment (archived 2026-11-05). This project is read-only; its GitHub repository is archived.
 
 
-Mock UI sample for the AI-compat drive proof, with no runnable interface.
+Built for AIKit (ADR-315): mock UI sample for the AI-compat drive proof, with
+no runnable interface.
 
 > **What this is.** A mock: `inventory.py` prints three placeholder
 > `kind|name|locator` lines and `demo.py` prints seeded `WORLD-DELTA` lines.
