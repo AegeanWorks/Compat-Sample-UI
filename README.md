@@ -6,7 +6,11 @@
 <!-- aegean:media:end -->
 
 
-UI sample for AI-compat proof
+Mock UI sample for the AI-compat drive proof, with no runnable interface.
+
+> **What this is.** A mock: `inventory.py` prints three placeholder
+> `kind|name|locator` lines and `demo.py` prints seeded `WORLD-DELTA` lines.
+> It exists only to prove the compat contract shape for UI-kind projects.
 
 ## ⚡ 30-Second Cold-Start Quick Reference
 
